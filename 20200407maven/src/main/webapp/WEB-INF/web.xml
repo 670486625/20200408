@@ -1,0 +1,30 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:example-servlet.xml</param-value>
+    </context-param>
+    <!--  Could not open ServletContext resource [/WEB-INF/example-servlet.xml] -->
+    <!-- 不过这个貌似不是必须的?只要下面那个就可以?虽然会waring? -->
+    <!-- servlet的配置 -->
+    <servlet>
+        <servlet-name>example</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 在web.xml里配置需要加载的spring配置文件。 如果要装入多个配置文件,在<param-value>标记中用逗号作分隔符即可。 -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:example-servlet.xml</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>  <!-- 配置servlet的启动时刻 -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>example</servlet-name>
+        <url-pattern>/</url-pattern>  <!-- 系统中的请求经过的 -->
+    </servlet-mapping>
+</web-app>
